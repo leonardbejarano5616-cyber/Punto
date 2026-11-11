@@ -1,5 +1,18 @@
 public class App {
     public static void main(String[] args) throws Exception {
+        Punto3D p3d = new Punto3D(1, 2, 3, 4);
+        System.out.println(p3d.modulo());
+        System.out.println(p3d.velocidad());
+        
+        /* 
+        PuntoTiempo pt1 = new PuntoTiempo();
+        System.out.println(pt1.getX());
+        System.out.println(pt1.getY());
+        System.out.println(pt1.getT());
+
+        System.out.println(pt1.modulo());
+        System.out.println(pt1.velocidad());
+        
         Punto p1 = new Punto(3, 4);
         System.out.println(p1.getX());
         System.out.println(p1.getY());
@@ -19,7 +32,7 @@ public class App {
         System.out.println(p1.fase());
         System.out.println(p2.fase());
         System.out.println(p3.fase());
-        /*
+        
         Punto punto1, punto2 = new Punto(0, 0), punto3, punto4;
         System.out.println(punto2.getX());
         System.out.println(punto2.getY());

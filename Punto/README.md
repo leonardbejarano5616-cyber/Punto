@@ -1,18 +1,40 @@
-## Getting Started
+# Sistema de gestión de estudiantes
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Aplicación de escritorio en Java Swing para registrar estudiantes, buscar por nombre o apellido, editar su información y eliminar registros. El formulario valida los campos y genera una matrícula automáticamente.
 
-## Folder Structure
+## Ejecutar
 
-The workspace contains two folders by default, where:
+Desde esta carpeta, compila las clases y ejecuta la aplicación:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+```powershell
+javac -d bin src\*.java
+java -cp bin SistemaGestionEstudiantes
+```
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Requiere un JDK instalado. No utiliza dependencias externas.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Navegabilidad
 
-## Dependency Management
+```mermaid
+flowchart TD
+    Inicio[Inicio / Resumen] --> Estudiantes[Listado de estudiantes]
+    Inicio --> Nuevo[Registrar estudiante]
+    Estudiantes --> Buscar[Buscar por nombre o apellido]
+    Estudiantes --> Editar[Editar estudiante seleccionado]
+    Estudiantes --> Eliminar[Eliminar estudiante seleccionado]
+    Buscar --> Estudiantes
+    Nuevo --> Guardar[Validar y guardar]
+    Nuevo --> Cancelar[Cancelar]
+    Editar --> Guardar
+    Editar --> Cancelar
+    Guardar --> Estudiantes
+    Cancelar --> Estudiantes
+    Eliminar --> Estudiantes
+    Estudiantes --> Inicio
+```
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+La barra lateral permite acceder a Inicio, Estudiantes y Registrar estudiante. Para editar o eliminar, selecciona primero un registro de la tabla.
+
+## Datos del estudiante
+
+Nombre, apellido, correo electrónico y carrera son obligatorios; el teléfono es opcional. Los registros se mantienen en memoria y se reinician al cerrar la aplicación. La persistencia en archivo o base de datos puede añadirse en una siguiente etapa.
